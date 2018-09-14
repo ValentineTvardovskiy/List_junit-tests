@@ -13,13 +13,27 @@ public class LinkedListTest {
     @Before
     public void setUp() throws Exception {
         linkedList = new LinkedList<>();
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+    }
+
+    @Test
+    public void testSizeIncrease() {
+        linkedList.add(4);
+        int expectedResult = 4;
+        Assert.assertEquals(expectedResult, linkedList.size());
+    }
+
+    @Test
+    public void testSizeDecrease() {
+        linkedList.remove(1);
+        int expectedResult = 2;
+        Assert.assertEquals(expectedResult, linkedList.size());
     }
 
     @Test
     public void testAddByValue() {
-        linkedList.add(1);
-        linkedList.add(2);
-        linkedList.add(3);
         int expectedResult = 3;
         int actualResult = linkedList.size();
         Assert.assertEquals(expectedResult, actualResult);
@@ -28,19 +42,12 @@ public class LinkedListTest {
 
     @Test
     public void testGetByIndex() {
-        linkedList.add(1);
-        linkedList.add(2);
-        linkedList.add(3);
         Integer expectedResult = 3;
         Assert.assertEquals(expectedResult, linkedList.get(2));
     }
 
     @Test
     public void testRemoveByIndexThatLastElementShifted() {
-        linkedList.add(1);
-        linkedList.add(2);
-        linkedList.add(3);
-
         Integer expectedResult = 3;
         linkedList.remove(1);
         Assert.assertEquals(expectedResult, linkedList.get(1));
@@ -48,10 +55,6 @@ public class LinkedListTest {
 
     @Test
     public void testRemoveByValue() {
-        linkedList.add(1);
-        linkedList.add(2);
-        linkedList.add(3);
-        linkedList.add(2);
         Integer expectedResult = 3;
         linkedList.remove(Integer.valueOf(2));
         Assert.assertEquals(expectedResult, linkedList.get(1));
