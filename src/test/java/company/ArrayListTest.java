@@ -36,7 +36,6 @@ public class ArrayListTest {
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void testSizeByNegativeScenario() {
-        int expectedResult = 0;
         arrayList.remove(0);
         arrayList.remove(1);
         arrayList.remove(2);

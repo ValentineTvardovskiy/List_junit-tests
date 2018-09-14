@@ -32,18 +32,30 @@ public class LinkedListTest {
         Assert.assertEquals(expectedResult, linkedList.size());
     }
 
+    @Test(expected = NullPointerException.class)
+    public void testSizeByNegativeScenario() {
+        linkedList.remove(0);
+        linkedList.remove(1);
+        linkedList.remove(2);;
+        linkedList.size();
+    }
+
     @Test
     public void testAddByValue() {
         int expectedResult = 3;
         int actualResult = linkedList.size();
         Assert.assertEquals(expectedResult, actualResult);
-
     }
 
     @Test
     public void testGetByIndex() {
         Integer expectedResult = 3;
         Assert.assertEquals(expectedResult, linkedList.get(2));
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testGetByNegativeScenario() {
+        linkedList.get(3);
     }
 
     @Test
@@ -58,6 +70,12 @@ public class LinkedListTest {
         Integer expectedResult = 3;
         linkedList.remove(Integer.valueOf(2));
         Assert.assertEquals(expectedResult, linkedList.get(1));
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testRemoveByNegativeScenario() {
+        linkedList.remove(4);
+        linkedList.get(4);
     }
 
 }
